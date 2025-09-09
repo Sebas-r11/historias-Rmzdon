@@ -1,0 +1,141 @@
+1.	¿Qué es TypeScript y en qué se diferencia de JavaScript?
+
+Typescripts es una extensión de JavaSripts con características añadidas.
+La diferencia es que javascript es el lenguaje de programación principal y typescript es una extensión que permiten crear aplicaciones
+escalables y mantenibles.
+
+Javascript columna vertebral, es la tecnología central del desarrollo web permite contenido dinámico e interactivos sirve como lenguaje de FRONT-END ya que
+es versátil para el desarrollo tanto del CLIENTE y el SERVIDOR; es de tipado dinámico en el  cual las variables no están vinculadas a tipos de datos, esto
+conlleva a errores en el tiempo de ejecución lo cual puede dar lugar a sesiones de depuración más largas, para la activación del entorno y herramientas función en
+cualquier editor o maximizar productividad tiene una sintaxis indulgente más accesible .
+
+Typescript es el superconjunto tipado de JavaScript estético, opcional, interfases y se ejecuta en la misma plataforma porque es compatible con la base
+del Código JS, su mecanografía es tipado estático lo cual define los tipos de variables durante el desarrollo reduciendo tiempos de compilación ideal para una
+aplicación a gran escala y de base de código complejo, garantiza la detección de errores en el tiempo de la compilación dando así la escalabilidad en comprobación de tipos, las interfases facilitan la coherencia de mantener el Código.
+Cuenta con un sólido soporte en IDE, proporciona mejoras como autocompletado navegación refactorización sintaxis más estricta anotación tipado e interfases
+
+
+
+
+2.	¿Qué ventajas ofrece TypeScript para trabajar con Programación Orientada a Objetos?
+TypeScript mejora la Programación Orientada a Objetos (POO) al ofrecer tipado estático que detecta errores antes de la ejecución, incrementa la mantenibilidad y escalabilidad de los proyectos gracias a interfaces y clases, y provee un soporte de herramientas superior (como IntelliSense) en los IDEs. Esto se traduce en código más robusto, errores reducidos, y una experiencia de desarrollo más eficiente y segura para aplicaciones complejas. 
+
+
+3.	¿Qué son los modificadores de acceso (public, private, protected)? Ejemplos.
+Los modificadores de acceso (public, private, protected) controlan la visibilidad y accesibilidad de los miembros de una clase (variables y métodos) en lenguajes de programación orientada a objetos como Java o C++. public permite el acceso desde cualquier lugar, private restringe el acceso solo a la propia clase, y protected permite el acceso dentro de la clase, en su propio paquete y a las subclases (clases que heredan de ella). 
+public
+Descripción
+: Los miembros declarados como public son accesibles desde cualquier otra clase, dentro o fuera del paquete. 
+Ejemplo (Java)
+:
+java
+// Clase publica
+public class CuentaBancaria {
+    // Variable publica, se puede acceder desde cualquier otra clase
+    public double saldo;
+
+    public CuentaBancaria(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double cantidad) {
+        this.saldo += cantidad;
+        System.out.println("Depósito exitoso. Saldo actual: " + this.saldo);
+    }
+}
+
+// Otra clase que accede a la variable publica
+public class Banco {
+    public static void main(String[] args) {
+        CuentaBancaria miCuenta = new CuentaBancaria(1000);
+        miCuenta.saldo = 1500; // Se permite modificarlo
+        miCuenta.depositar(500);
+    }
+}
+En este caso, la variable saldo y el método depositar de CuentaBancaria son accesibles desde la clase Banco. 
+private
+Descripción
+: Los miembros private solo son accesibles dentro de la misma clase en la que se definen. Son inaccesibles para otras clases, incluso para las que heredan de ella. 
+Ejemplo (Java)
+:
+java
+public class Persona {
+    // Variable privada, solo accesible dentro de esta clase
+    private String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
+    // Método para acceder (getter) a la variable privada
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    // Método privado, solo accesible dentro de Persona
+    private void mostrarNombreInterno() {
+        System.out.println("Se accede desde dentro: " + this.nombre);
+    }
+
+    public void mostrarNombre() {
+        mostrarNombreInterno(); // Llama al método interno
+    }
+}
+
+public class Inicio {
+    public static void main(String[] args) {
+        Persona persona = new Persona("Ana");
+        // persona.nombre = "Juan"; // Error: nombre es private
+        System.out.println(persona.getNombre()); // Usando el método público (getter)
+        persona.mostrarNombre(); // Llama al método público que a su vez llama al privado
+    }
+}
+Aquí, nombre es private y no se puede acceder directamente desde la clase Inicio; solo se puede obtener su valor a través del método público getNombre(), y mostrarNombreInterno() solo puede ser llamado desde dentro de Persona. 
+protected
+Descripción
+: Los miembros protected son accesibles desde dentro de su propio paquete (como la palabra clave por defecto o package-private) y también por las subclases (clases que heredan de ella), incluso si están en un paquete diferente. 
+Ejemplo (Java)
+:
+Clase protegida en paquete1:
+java
+// En paquete1
+package paquete1;
+
+public class Vehiculo {
+    protected String marca;
+
+    public Vehiculo(String marca) {
+        this.marca = marca;
+    }
+}
+Clase hija en paquete2:
+java
+// En paquete2
+package paquete2;
+
+import paquete1.Vehiculo;
+
+public class Coche extends Vehiculo {
+    public Coche(String marca) {
+        super(marca); // Accede al constructor de Vehiculo
+    }
+
+    public void mostrarMarca() {
+
+4.	¿Qué es un readonly y para qué se usa?
+
+Un readonly (solo lectura) es un modificador o atributo que se usa para impedir que el valor de un campo o elemento se modifique después de su inicialización, ya sea por el usuario o mediante una reasignación en el código. Se utiliza para mostrar datos que no deben ser editados, como resultados de cálculos, IDs de usuario o información que debe permanecer fija, garantizando la integridad de los datos y la experiencia del usuario. 
+En lenguajes de programación un campo o variable con el modificador readonly se puede asignar solo una vez, generalmente dentro del constructor de la clase o al declararlo. No permite reasignar su valor en ningún otro método
+
+5.	¿Cómo se definen clases y objetos en TS?
+una clase es un plano o plantilla que define las propiedades (variables) y el comportamiento (métodos) que tendrán los objetos, mientras que un objeto es una instancia concreta de esa clase, una entidad única con sus propios valores para las propiedades definidas. Se define una clase usando la palabra clave class y se crean instancias de objetos con la palabra clave new, pasando argumentos al método constructor para inicializar las propiedades.
+6.	¿Qué son los constructores y para qué sirven?
+
+En TypeScript, un constructor es un método especial dentro de una clase que se ejecuta automáticamente al crear una nueva instancia (objeto) de esa clase. Sirve para inicializar las propiedades del objeto, estableciendo su estado inicial. Se define con la palabra clave constructor y es esencial para asegurar que los objetos se creen con valores válidos y listos para su uso. 
+¿Para qué sirven los constructores?
+Los constructores son fundamentales para: 
+Inicialización de Propiedades: Permiten asignar valores a las variables (propiedades) de una clase cuando se crea un objeto. Por ejemplo, para un objeto Coche, el constructor podría asignar un color y un modelo al crear una nueva instancia. 
+Garantizar un Estado Válido: Aseguran que una instancia de una clase no pueda ser creada sin que sus propiedades tengan valores predefinidos y apropiados, lo que ayuda a prevenir errores. 
+Simplificar la Declaración de Propiedades (Sintaxis Abreviada):TypeScript permite declarar y asignar propiedades de forma compacta directamente en los parámetros del constructor, lo que reduce la cantidad de código. 
+Controlar la Instanciación: Puedes usar modificadores como private para evitar que otras partes de tu código creen instancias de una clase. 
+Usos en Herencia: En clases que heredan de otras, el constructor de la clase hija debe llamar al constructor de la clase padre usando super () para asegurar la correcta inicialización de todas las propiedades
